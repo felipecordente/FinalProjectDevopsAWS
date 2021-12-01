@@ -4,6 +4,7 @@ jobs:
   push_to_registry:
     runs-on: ubuntu-20.04
     steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - name: Check out the repo
         uses: actions/checkout@v2
 
