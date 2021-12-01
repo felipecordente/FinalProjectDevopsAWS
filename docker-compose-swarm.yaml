@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  covid19_1:
+    image: felipecordente/covid19swarm:v2
+    build: .
+    ports:
+      - "40001:8000"
+    deploy:
+      replicas: 2
+      update_config:
+        delay: 10s
+
