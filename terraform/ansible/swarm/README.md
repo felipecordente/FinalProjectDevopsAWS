@@ -11,6 +11,11 @@ To create the swarm cluster:
 ansible-playbook -i hosts.ini -u ubuntu create_swarm.yml
 ```
 
+To deploy the app covid19 in the cluster:
+```shell
+ansible-playbook -i hosts.ini -u ubuntu deploy_app.yml
+```
+
 To destroy the cluster:
 
 ```shell
