@@ -1,7 +1,5 @@
 - hosts: cluster
   tasks:
-
-
     - name: create docker_service group
       add_host:
         hostname: "{{ item }}"
@@ -27,5 +25,11 @@
       run_once: true
     - name: deploy covid19 app
       shell: docker stack deploy --compose-file docker-compose-swarm.yaml covid19
+      run_once: true
+    - name: copying prometheus config
+      become: true
+      copy:
+        src: ../../../prometheus/prometheus.yml
+        dest: ./prometheus.yml
       run_once: true
 
