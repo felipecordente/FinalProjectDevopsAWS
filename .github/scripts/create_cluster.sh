@@ -12,7 +12,7 @@ cd terraform/terraform_aws
 cd ../..
 
 # Wait until docker is installed in all the nodes
-echo "Waiting 60s for docker install process in the cluster nodes"
+echo "Waiting 150s for docker install process in the cluster nodes"
 sleep 150
 
 # Ansible configuration
