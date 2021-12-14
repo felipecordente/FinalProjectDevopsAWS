@@ -13,7 +13,7 @@ cd ../..
 
 # Wait until docker is installed in all the nodes
 echo "Waiting 60s for docker install process in the cluster nodes"
-sleep 60
+sleep 150
 
 # Ansible configuration
 mkdir ~/.ssh
