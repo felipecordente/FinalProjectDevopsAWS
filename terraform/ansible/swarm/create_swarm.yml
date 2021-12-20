@@ -72,11 +72,19 @@
   vars:
     token: "{{ hostvars[groups['swarm_active'][0]]['swarm_manager_token']['stdout'] }}"
   tasks:
+    - name: determine swarm status before join
+      shell: >
+        docker info --format \{\{.Swarm.LocalNodeState\}\}
+      register: swarm_status
+    - name: Print the swarm status before join
+      debug:
+        msg: "The swarm status is ->{{ swarm_status.stdout }}<-"
     - name: join inactive nodes as manager to cluster
       shell: >
         docker swarm join --advertise-addr={{ ansible_default_ipv4.address }}:2377
         --token={{ token }}
         {{ groups['swarm_manager_ips'][0] }}:2377
+      when: "'inactive' in swarm_status.stdout_lines"
 
 # show the nodes of the cluster
 - hosts: swarm_active[0]
